@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "status": "Head of the Department",
+        "name": "Yslam Orazov",
+        "roomNum": "unknown",
+        "img": "/male.png",
+        "subjects": "Robotics and Mechatronics, Scientific"  
+    },
+    {
+        "id": 1,
+        "status": "Instructor",
+        "name": "Ayjemal Yazjumayeva",
+        "roomNum": "1415",
+        "img": "/female.png",
+        "subjects": "Scientific, Reliability of Automated System"
+    },
+    {
+        "id": 2,
+        "status": "Instructor",
+        "name": "Perman Hojagulyyev",
+        "img": "/male.png",
+        "roomNum": "Dean's office",
+        "subjects": "Scientific, Communication techniques"
+    },
+    {
+        "id": 3,
+        "status": "Instructor",
+        "name": "Ayjemal Ussayeva",
+        "roomNum": "unknown",
+        "img": "/female.png",
+        "subjects": "Scientific, Techniques of Automatic management "
+    },
+    {
+        "id": 4,
+        "status": "Instructor",
+        "name": "Aygul Charyeva",
+        "roomNum": "1415",
+        "img": "/female.png",
+        "subjects": "Scientific, Control systems engineering"
+    }
+]

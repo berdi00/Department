@@ -1,0 +1,101 @@
+[
+  {
+    "id": "firstmecha",
+    "schedule": [
+      {
+        "day": 1,
+        "subjects": ["History", "Astronomy", "Math"]
+      },
+      {
+        "day": 2,
+        "subjects": ["Electricity", "English", "Russian"]
+      },
+      {
+        "day": 3,
+        "subjects": ["Math", "Physics", "Drawing"]
+      },
+      {
+        "day": 4,
+        "subjects": ["Japanese", "Calculus", "Biology"]
+      },
+      {
+        "day": 5,
+        "subjects": ["Sport", "Culture", "Math"]
+      },
+      {
+        "day": 6,
+        "subjects": ["Statistics", "Chemistry", "Math"]
+      }
+    ]
+  },
+  {
+    "id": "secondeco",
+    "schedule": [
+      {
+        "day": 1,
+        "subjects": ["History", "Astronomy", "Math"]
+      },
+      {
+        "day": 2,
+        "subjects": ["Electricity", "English", "Russian"]
+      },
+      {
+        "day": 3,
+        "subjects": ["Math", "Physics", "Drawing"]
+      },
+      {
+        "day": 4,
+        "subjects": ["Japanese", "Calculus", "Biology"]
+      },
+      {
+        "day": 5,
+        "subjects": ["Sport", "Culture", "Math"]
+      },
+      {
+        "day": 6,
+        "subjects": ["Statistics", "Chemistry", "Math"]
+      }
+    ]
+  },
+  {
+    "id": "thirdauto",
+    "schedule": [
+      {
+        "day": 1,
+        "subjects": [
+          "Computer Architecture",
+          "Computer Architecture",
+          "Innovation"
+        ]
+      },
+      {
+        "day": 2,
+        "subjects": [
+          "Automation Techniques",
+          "Communication Techniques",
+          "Computer Architecture"
+        ]
+      },
+      {
+        "day": 3,
+        "subjects": ["Political science", "Electronics", "Electronics"]
+      },
+      {
+        "day": 4,
+        "subjects": [
+          "Communication Techniques",
+          "Material Science",
+          "Innovation"
+        ]
+      },
+      {
+        "day": 5,
+        "subjects": ["Scientific", "Scientific", "Scientific"]
+      },
+      {
+        "day": 6,
+        "subjects": ["Automation Techniques", "Electronics", "Material Science"]
+      }
+    ]
+  }
+]

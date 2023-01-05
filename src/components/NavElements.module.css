@@ -1,0 +1,8 @@
+.navEl {
+    text-decoration: none;
+    color: #fff
+}
+
+.navEl:focus {
+    color: gray
+}

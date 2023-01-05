@@ -1,0 +1,99 @@
+.modalOverlay {
+  position: fixed;
+  top: 20vh;
+  left: 25%;
+  right: 25%;
+  width: 50vw;
+  background-color: white;
+  padding: 1rem;
+  border-top: 1rem solid blue;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+.videoOverlay {
+  position: fixed;
+  top: 0;
+  left: 3em;
+  right: 5rem;
+  width: 90vw;
+  border-radius: 14px;
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+.bottomContents {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textModal {
+  color: #141e30;
+}
+
+.collection {
+  color: orange;
+  font-family: fantasy;
+  font-size: 1.1rem;
+}
+.modalBtn {
+  padding: 10px;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: black;
+}
+
+.bookCloseBtn {
+  display: block;
+  float: right;
+  font-size: 1rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin: 4px;
+  background-color: red;
+}
+
+.bookCloseBtn:hover {
+  background-color: orangered;
+}
+
+.modalBtn:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.tagH1 {
+  text-align: center;
+  padding: 2rem;
+  color: #004e92;
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.75);
+}
