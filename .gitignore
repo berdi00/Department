@@ -1,5 +1,6 @@
 # Back
 back/venv
+back/.env
 
 # Logs
 logs
