@@ -1,6 +1,7 @@
 # Back
 back/venv
 back/.env
+__pycache__/
 
 # Logs
 logs

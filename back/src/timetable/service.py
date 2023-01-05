@@ -2,14 +2,16 @@ from ..database import DB
 from src.timetable.schema import Timetable
 
 
-def get_timetable(course: str) -> None:
+def get_timetable(course: str) -> list:
     id = DB.select('''
         SELECT id FROM course WHERE title = %(title)s
     ''', {'title': course})
 
-    return DB.select('''
+    result = DB.select('''
         SELECT * FROM timetable WHERE course_id = %(id)s
     ''', {'id': id[0][0]})
+
+    return result[0]
 
 
 def create_timetable(course: str, timetable: Timetable) -> None:
