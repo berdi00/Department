@@ -15,6 +15,8 @@ def get_timetable(course: str) -> list:
 
 
 def create_timetable(course: str, timetable: Timetable) -> None:
+    lessons = timetable.schedule
+
     id = DB.select('''
         SELECT id FROM course WHERE title = %(title)s
     ''', {'title': course})
@@ -29,10 +31,10 @@ def create_timetable(course: str, timetable: Timetable) -> None:
 
     DB.execute(raw, (
         id[0][0],
-        timetable.one,
-        timetable.two,
-        timetable.three,
-        timetable.four,
-        timetable.five,
-        timetable.six
+        [lessons[0].lesson_1, lessons[0].lesson_2, lessons[0].lesson_3],
+        [lessons[1].lesson_1, lessons[1].lesson_2, lessons[1].lesson_3],
+        [lessons[2].lesson_1, lessons[2].lesson_2, lessons[2].lesson_3],
+        [lessons[3].lesson_1, lessons[3].lesson_2, lessons[3].lesson_3],
+        [lessons[4].lesson_1, lessons[4].lesson_2, lessons[4].lesson_3],
+        [lessons[5].lesson_1, lessons[5].lesson_2, lessons[5].lesson_3]
     ))

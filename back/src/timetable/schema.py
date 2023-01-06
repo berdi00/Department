@@ -1,10 +1,12 @@
 from pydantic import BaseModel
+from pydantic import Field
+
+
+class Day(BaseModel):
+    lesson_1: str
+    lesson_2: str
+    lesson_3: str
 
 
 class Timetable(BaseModel):
-    one: list[str, 3]
-    two: list[str, 3]
-    three: list[str, 3]
-    four: list[str, 3]
-    five: list[str, 3]
-    six: list[str, 3]
+    schedule: list[Day] = Field(None, max_items=6, min_items=6)
