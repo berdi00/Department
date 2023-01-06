@@ -1,5 +1,3 @@
-# Backend
-
 ## Request 1
 
 | URL                                       | METHOD |
