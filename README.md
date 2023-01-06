@@ -67,11 +67,37 @@ POST localhost:3001/timetable/firstauto
 
 ```json
 {
-  "one": ["one", "two", "three"], // list of subjects
-  "two": ["one", "two", "three"],
-  "three": ["one", "two", "three"],
-  "four": ["one", "two", "three"],
-  "five": ["one", "two", "three"],
-  "six": ["one", "two", "three"]
+    "schedule": [
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    },
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    },
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    },
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    },
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    },
+    {
+      "lesson_1" : "one",
+      "lesson_2": "two",
+      "lesson_3": "three"
+    }
+  ]
 }
 ```
