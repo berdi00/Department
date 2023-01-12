@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom";
 import data from "../data/schedules.json";
 import ModifySchedule from "./ModifySchedule";
 
+import axios from "axios";
+
+const baseUrl = "http://172.20.10.13:3000/timetable/firstauto";
+
 const majors = [
   {
     key: "auto",
@@ -28,6 +32,7 @@ const majors = [
 
 function getSchedule(id) {
   const matchedShedule = data.find((key) => key.id === id);
+  console.log(matchedShedule);
   return matchedShedule;
 }
 
@@ -62,28 +67,35 @@ const Schedule = ({ role }) => {
 
   useEffect(() => {
     const matchedData = getSchedule(params.gradeId);
+    console.log(matchedData);
     setData(matchedData);
+
+    // axios.get(baseUrl).then((res) => {
+    //   console.log(res.data);
+    // });
   }, [params]);
 
-  let validData;
-  if (typeof sdata === "undefined") {
-    validData = undefined;
-  } else {
-    validData = sdata["schedule"];
+  if (sdata === undefined) {
+    return (
+      <>
+        <h1 className="m-3 text-center">{finalTitle}</h1>
+        <ModifySchedule data={[1, 2, 3, 4, 5, 6, 7]} />
+      </>
+    );
   }
 
   let conditionalEl =
     role === "admin" ? (
       <>
         <h1 className="m-3 text-center">{finalTitle}</h1>
-        <ModifySchedule data={validData} />
+        <ModifySchedule data={sdata["schedule"]} />
       </>
     ) : (
       <VerticallyCenteredModal
         role={role}
         show={modalIsOpen}
         onHide={() => closeModal()}
-        data={validData}
+        data={sdata["schedule"]}
       />
     );
   return <>{conditionalEl}</>;

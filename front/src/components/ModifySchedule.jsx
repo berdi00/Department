@@ -80,19 +80,16 @@ const EditableCell = ({
 const ModifySchedule = ({ data }) => {
   console.log(data);
   useEffect(() => {
-    if (data) {
-      const mappedData = data?.map((data) => ({
-        key: data.day,
-        day: data.day,
-        lesson_1: data.subjects[0] || "",
-        lesson_2: data.subjects[1] || "",
-        lesson_3: data.subjects[2] || "",
-      }));
-      setDataSource(mappedData);
-      setCount(data.length + 1);
-    } else {
-      return 0;
-    }
+    const mappedData = data?.map((data, index) => ({
+      key: data?.day || index + 1,
+      day: data?.day || index + 1,
+      lesson_1: data?.subjects ? data?.subjects[0] : "1",
+      lesson_2: data?.subjects ? data?.subjects[1] : "2",
+      lesson_3: data?.subjects ? data?.subjects[2] : "3",
+    }));
+    setDataSource(mappedData);
+    console.log(mappedData);
+    setCount(data?.length + 1 || 6);
   }, [data]);
   const [dataSource, setDataSource] = useState([]);
   const [count, setCount] = useState();
@@ -160,6 +157,10 @@ const ModifySchedule = ({ data }) => {
     });
     setDataSource(newData);
   };
+
+  const onSave = () => {
+    console.log("save pressed");
+  };
   const components = {
     body: {
       row: EditableRow,
@@ -182,8 +183,8 @@ const ModifySchedule = ({ data }) => {
     };
   });
 
-  if (!data) {
-    return <h1>Something wrong</h1>;
+  if (data?.length === 0) {
+    return <h1>Something empty</h1>;
   }
   return (
     <div>
@@ -203,6 +204,9 @@ const ModifySchedule = ({ data }) => {
         dataSource={dataSource}
         columns={columns}
       />
+      <Button type="primary" onClick={onSave}>
+        Save
+      </Button>
     </div>
   );
 };
