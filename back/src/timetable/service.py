@@ -1,17 +1,33 @@
-from ..database import DB
+from src.database import DB
 from src.timetable.schema import Timetable
 
 
-def get_timetable(course: str) -> list:
-    id = DB.select('''
-        SELECT id FROM course WHERE title = %(title)s
-    ''', {'title': course})
-
-    result = DB.select('''
-        SELECT * FROM timetable WHERE course_id = %(id)s
-    ''', {'id': id[0][0]})
+def get_timetable(course: str) -> list | str:
+    result = DB.select(
+        '''
+            SELECT one, two, three, four, five, six
+            FROM timetable t
+            INNER JOIN course ON course.id = t.course_id
+            WHERE course.title = %(course)s
+        ''',
+        {"course": course}
+    )
 
     return result[0]
+
+
+def get_students(course: str) -> list | str:
+    result = DB.select(
+        '''
+            SELECT s.username, s.surname, s.card_id
+            FROM students s
+            INNER JOIN course ON course.id = s.course_id
+            WHERE course.title = %(course)s
+        ''',
+        {"course": course}
+    )
+
+    return result
 
 
 def create_timetable(course: str, timetable: Timetable) -> None:

@@ -3,6 +3,19 @@ CREATE TABLE course (
     title VARCHAR UNIQUE NOT NULL
 );
 
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    course_id INT NOT NULL,
+    username VARCHAR NOT NULL,
+    surname VARCHAR NOT NULL,
+    card_id INT NOT NULL,
+
+    CONSTRAINT course_id
+        FOREIGN KEY (course_id)
+            REFERENCES course(id)
+                ON UPDATE CASCADE
+);
+
 CREATE TABLE timetable (
     id SERIAL PRIMARY KEY,
     course_id INT NOT NULL,
