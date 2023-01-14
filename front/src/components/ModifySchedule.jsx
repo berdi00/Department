@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Button, Form, Input, Popconfirm, Table } from "antd";
+import axios from "axios";
 const EditableContext = React.createContext(null);
 const EditableRow = ({ index, ...props }) => {
   const [form] = Form.useForm();
@@ -11,6 +12,8 @@ const EditableRow = ({ index, ...props }) => {
     </Form>
   );
 };
+const baseUrl = "http://172.20.10.13:3000/timetable";
+
 const EditableCell = ({
   title,
   editable,
@@ -77,22 +80,22 @@ const EditableCell = ({
   }
   return <td {...restProps}>{childNode}</td>;
 };
-const ModifySchedule = ({ data }) => {
+const ModifySchedule = ({ data, gradeId }) => {
   console.log(data);
   useEffect(() => {
     const mappedData = data?.map((data, index) => ({
       key: data?.day || index + 1,
       day: data?.day || index + 1,
-      lesson_1: data?.subjects ? data?.subjects[0] : "1",
-      lesson_2: data?.subjects ? data?.subjects[1] : "2",
-      lesson_3: data?.subjects ? data?.subjects[2] : "3",
+      lesson_1: data[0],
+      lesson_2: data[1],
+      lesson_3: data[2],
     }));
     setDataSource(mappedData);
     console.log(mappedData);
     setCount(data?.length + 1 || 6);
   }, [data]);
   const [dataSource, setDataSource] = useState([]);
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(data?.length);
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
@@ -159,7 +162,16 @@ const ModifySchedule = ({ data }) => {
   };
 
   const onSave = () => {
-    console.log("save pressed");
+    try {
+      const payload = {
+        schedule: dataSource,
+      };
+      axios.post(`${baseUrl}/${gradeId}`, payload).then((res) => {
+        console.log(res, "res of post");
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   const components = {
     body: {
@@ -182,10 +194,6 @@ const ModifySchedule = ({ data }) => {
       }),
     };
   });
-
-  if (data?.length === 0) {
-    return <h1>Something empty</h1>;
-  }
   return (
     <div>
       <Button

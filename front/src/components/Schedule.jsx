@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import VerticallyCenteredModal from "./VerticallyCenteredModal";
 import { useCustomContext } from "../context/CustomContext";
 import { useParams } from "react-router-dom";
-import data from "../data/schedules.json";
 import ModifySchedule from "./ModifySchedule";
 
 import axios from "axios";
+import { notification } from "antd";
 
-const baseUrl = "http://172.20.10.13:3000/timetable/firstauto";
+const baseUrl = "http://172.20.10.13:3000/timetable";
 
 const majors = [
   {
@@ -29,12 +29,6 @@ const majors = [
     id: 3,
   },
 ];
-
-function getSchedule(id) {
-  const matchedShedule = data.find((key) => key.id === id);
-  console.log(matchedShedule);
-  return matchedShedule;
-}
 
 function getTitle(titleName) {
   const matched = majors.find((item) => item.key === titleName);
@@ -66,36 +60,30 @@ const Schedule = ({ role }) => {
   const finalTitle = getTitle(titleKey);
 
   useEffect(() => {
-    const matchedData = getSchedule(params.gradeId);
-    console.log(matchedData);
-    setData(matchedData);
-
-    // axios.get(baseUrl).then((res) => {
-    //   console.log(res.data);
-    // });
+    try {
+      axios.get(`${baseUrl}/${params.gradeId}`).then((res) => {
+        console.log(res.data, "res data");
+        setData(res.data);
+      });
+    } catch {
+      notification.error({
+        message: "Could not get",
+      });
+    }
   }, [params]);
-
-  if (sdata === undefined) {
-    return (
-      <>
-        <h1 className="m-3 text-center">{finalTitle}</h1>
-        <ModifySchedule data={[1, 2, 3, 4, 5, 6, 7]} />
-      </>
-    );
-  }
 
   let conditionalEl =
     role === "admin" ? (
       <>
         <h1 className="m-3 text-center">{finalTitle}</h1>
-        <ModifySchedule data={sdata["schedule"]} />
+        <ModifySchedule data={sdata} gradeId={params.gradeId} />
       </>
     ) : (
       <VerticallyCenteredModal
         role={role}
         show={modalIsOpen}
         onHide={() => closeModal()}
-        data={sdata["schedule"]}
+        data={sdata}
       />
     );
   return <>{conditionalEl}</>;

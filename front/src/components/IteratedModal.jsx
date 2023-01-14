@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const IteratedModal = ({data}) => {
+const IteratedModal = ({ data, id }) => {
   return (
     <tr>
-          <td>{data.day}</td>
-          <td>{data.subjects[0]}</td>
-          <td>{data.subjects[1]}</td>
-          <td>{data.subjects[2]}</td>
-        </tr>
-  )
-}
+      <td>{id + 1}</td>
+      <td>{data[0]}</td>
+      <td>{data[1]}</td>
+      <td>{data[2]}</td>
+    </tr>
+  );
+};
 
-export default IteratedModal
+export default IteratedModal;

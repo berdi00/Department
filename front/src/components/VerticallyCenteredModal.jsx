@@ -3,6 +3,7 @@ import { Modal, Button, Table } from "react-bootstrap";
 import IteratedModal from "./IteratedModal";
 
 const VerticallyCenteredModal = (props) => {
+  console.log(props.data, "data in vertical");
   return (
     <Modal
       {...props}
@@ -14,13 +15,13 @@ const VerticallyCenteredModal = (props) => {
         <Modal.Title id="contained-modal-title-vcenter">Schedule</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {typeof props.data === "undefined" ? (
+        {props.data.length === 0 ? (
           <h1>no schedule for u</h1>
         ) : (
           <Table striped bordered hover>
             <tbody>
-              {props.data.map((data) => (
-                <IteratedModal key={data.day} data={data} />
+              {props.data?.map((data, index) => (
+                <IteratedModal key={index} data={data} id={index} />
               ))}
             </tbody>
           </Table>
